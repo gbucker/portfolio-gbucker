@@ -34,8 +34,7 @@ function PagesList({ pages, pathname }: { pages: Page[], pathname: string}) {
       slug: '',
       content: pages[0].content,
     }
-    console.log("pathname : ", pathname)
-  
+
     newPages.unshift(projetos);
 
   return (
