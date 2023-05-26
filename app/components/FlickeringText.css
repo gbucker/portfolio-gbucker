@@ -1,0 +1,17 @@
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#flickerText {
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  animation: flickerAnimation 5s infinite;
+}
