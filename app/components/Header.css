@@ -1,0 +1,22 @@
+.menu-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.menu-wrapper.open {
+  max-height: 500px; /* Set the desired maximum height for the menu */
+  transition: max-height 0.5s ease-in;
+}
+
+.MENU-LINK-MOBILE-OPEN.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.MENU-LINK-MOBILE-OPEN {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+}

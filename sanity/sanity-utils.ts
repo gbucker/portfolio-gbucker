@@ -4,6 +4,7 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
 import imageUrlBuilder from "@sanity/image-url";
 import { Post } from "@/types/Post";
+import { Link } from "@/types/Link";
 
 export async function getProjects(): Promise<Project[]> {
   const projects = await createClient(clientConfig).fetch(
@@ -96,6 +97,35 @@ export async function getPost(slug: string): Promise<Post> {
       "slug": slug.current,
       publishedAt,
       content
+    }`,
+    { slug }
+  );
+}
+
+export async function getLinks(): Promise<Link[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "linktree"]{
+      _id,
+      _createdAt,
+      name,
+      "slug": slug.current,
+      image,
+      url,
+      date
+    }`
+  );
+}
+
+export async function getLink(slug: string): Promise<Link> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "linktree" && slug.current == $slug][0]{
+      _id,
+      _createdAt,
+      name,
+      "slug": slug.current,
+      image,
+      url,
+      date
     }`,
     { slug }
   );

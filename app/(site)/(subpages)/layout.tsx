@@ -18,9 +18,9 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-br">
-      <body className="max-w-5xl mx-auto py-10 overflow-y-scroll">
-        <Header pages={pages} showNameHeader={true}/>
-        <main className="">{children}</main>
+      <body className="max-w-5xl mx-auto p-10 overflow-y-scroll">
+        <main className=""><Header pages={pages} showNameHeader={true}/>
+        {children}</main>
       </body>
     </html>
   );

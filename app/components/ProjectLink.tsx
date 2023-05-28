@@ -1,8 +1,7 @@
-"use client";
 import Link from 'next/link';
 import React from 'react';
 import YoutubeComponent from './YoutubeComponent';
-import { Spotify } from 'react-spotify-embed';
+import SpotifyComponent from './SpotifyComponent';
 
 const ProjectLink = ({ url }: {url: string}) => {
   if (url.includes('youtube.com') || url.includes('youtu.be')) {
@@ -15,12 +14,6 @@ const ProjectLink = ({ url }: {url: string}) => {
   } else {
     return <OtherComponent url={url}/>;
   }
-};
-
-const SpotifyComponent = ({url}: {url: string}) => {
-  return (
-    <Spotify wide link={url} />
-  );
 };
 
 const PdfComponent = ({url}: {url: string}) => {

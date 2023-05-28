@@ -1,5 +1,7 @@
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
+import { visionTool } from "@sanity/vision";
+import { media } from "sanity-plugin-media";
 import schemas from "./sanity/schemas";
 
 const config = defineConfig({
@@ -8,7 +10,7 @@ const config = defineConfig({
   title: "Porfólio Gustavo Bucker",
   apiVersion: "2023-05-24",
   basePath: "/admin",
-  plugins: [deskTool()],
+  plugins: [deskTool(), visionTool(), media()],
   schema: { types: schemas },
 });
 

@@ -1,8 +1,7 @@
 import "@/app/globals.css";
-import React from 'react';
 import { getPages } from "@/sanity/sanity-utils";
-import Header from "@/app/components/Header";
-import NameHeader from "@/app/components/NameHeader";
+import Header from "../../components/Header";
+import React from 'react';
 
 export const metadata = {
   title: "Gustavo Bucker",
@@ -19,9 +18,7 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-br">
-      <body className="max-w-5xl mx-auto xl:py-10 p-10 xl:p-0 overflow-y-scroll overflow-x-auto">
-        <Header pages={pages} showNameHeader={false}/>
-        <NameHeader />
+      <body className="max-w-xl mx-[max(10vw,12px)] py-10 overflow-y-scroll bg-gradient-to-b bg-fixed from-green-500 via-gray-600 to-indigo-600 my-auto">
         <main className="">{children}</main>
       </body>
     </html>

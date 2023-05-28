@@ -45,7 +45,7 @@ export default async function Page({params}: PageProps) {
         alt={value.alt}
         width={400}
         height={400}
-        className="object-cover rounded-lg border border-gray-500"
+        className="object-cover rounded-lg"
         /></div>
       ,
     },
