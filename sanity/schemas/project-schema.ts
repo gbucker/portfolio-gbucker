@@ -52,7 +52,7 @@ const project = {
       type: "array",
       of: [
         {
-          type: "url",
+          type: "object",
           fields: [
             {
               title: "URL",
