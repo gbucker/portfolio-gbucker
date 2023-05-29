@@ -27,7 +27,7 @@ function ProjectsList({projects}: {projects: Project[]}) {
   return (
     <>
       <h2 className="text-xl md:text-4xl font-extrabold text-gray-800 mb-10">Projetos</h2>
-      <div className="mt-5 flex justify-between gap-5 pb-10 text-lg md:text-xl text-gray-800 md:text-gray-600 flex-wrap">
+      <div className="mt-5 flex justify-left gap-10 pb-10 text-lg md:text-xl text-gray-800 md:text-gray-600 flex-wrap">
         <a className={`hover:cursor-pointer ${selectedOption === 'todos' && 'font-bold'}`} onClick={() => handleLinkClick('todos')}>Todos</a>
         <a className={`hover:cursor-pointer ${selectedOption === 'roteiro' && 'font-bold'}`} onClick={() => handleLinkClick('roteiro')}>Roteiro</a>
         <a className={`hover:cursor-pointer ${selectedOption === 'direcao' && 'font-bold'}`} onClick={() => handleLinkClick('direcao')}>Direção</a>

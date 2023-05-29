@@ -4,7 +4,7 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
-import { stringify } from "querystring";
+import { Metadata } from 'next';
 
 type PageProps = {
   params: {slug: string}
@@ -41,7 +41,7 @@ export default async function Page({params}: PageProps) {
     },
     types: {
       image: ({value}) =><div className="flex items-center justify-left my-10"><Image
-        src={urlFor(value).width(400).height(400).url()}
+        src={urlFor(value).width(600).height(600).url()}
         alt={value.alt}
         width={400}
         height={400}
@@ -57,4 +57,14 @@ export default async function Page({params}: PageProps) {
       <PortableText value={page.content} components={components}/>
     </div>
   )
+}
+
+export async function generateMetadata(
+  { params }: PageProps
+): Promise<Metadata> {
+  const page = await getPage(params.slug);
+ 
+  return {
+    title: `${page.title} - Gustavo Bucker`,
+  };
 }

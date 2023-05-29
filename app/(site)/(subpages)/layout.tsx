@@ -5,7 +5,7 @@ import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
-  title: "Gustavo Bucker",
+  title: "Gustavo Bucker - Portfólio",
   description: "Portfólio de Gustavo Bucker",
 };
 

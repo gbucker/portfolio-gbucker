@@ -3,12 +3,13 @@ import { getProject, urlFor } from "@/sanity/sanity-utils";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import ProjectLink from "@/app/components/ProjectLink";
+import { Metadata } from "next";
 
-type Props = {
+type ProjectProps = {
   params: {project: string}
 }
 
-export default async function Project({params}: Props) {
+export default async function Project({params}: ProjectProps) {
   const slug = params.project;
   const project = await getProject(slug);
 
@@ -21,7 +22,7 @@ export default async function Project({params}: Props) {
           alt={project.name}
           width={50}
           height={50}
-          className="hidden md:flex object-cover rounded-md border-1 border-gray-700 w-50"
+          className="hidden md:flex object-cover rounded-md border border-gray-700 w-50"
           />
       <div className="text-4xl font-extrabold text-gray-600">{project.name}</div>
     </div>
@@ -42,3 +43,12 @@ export default async function Project({params}: Props) {
   )
 }
 
+export async function generateMetadata(
+  { params }: ProjectProps
+): Promise<Metadata> {
+  const page = await getProject(params.project);
+ 
+  return {
+    title: `${page.name} - Gustavo Bucker`,
+  };
+}

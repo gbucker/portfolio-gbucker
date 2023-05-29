@@ -27,7 +27,7 @@ function PagesList({ pages, pathname }: { pages: Page[], pathname: string}) {
     const projetos: Page = {
       _id: '1',
       _createdAt: undefined,
-      title: 'Projetos',
+      title: 'Portfólio',
       slug: '',
       content: pages[0].content,
     }

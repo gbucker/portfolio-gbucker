@@ -19,6 +19,7 @@ const project = {
     {
       name: "tags",
       type: "array",
+      validation: (Rule: { required: () => any }) => Rule.required(),
       of: [
         {
           type: "string",
