@@ -26,6 +26,12 @@ const linktree = {
       type: "date",
       options: { dateFormat: "DD/MM/yyyy" },
     },
+    {
+      name: "accesscount",
+      title: "Access Count",
+      type: "number",
+      readonly: true,
+    },
   ],
 };
 

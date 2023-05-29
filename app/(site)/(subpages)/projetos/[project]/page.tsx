@@ -31,11 +31,12 @@ export default async function Project({params}: Props) {
         <PortableText value={project.content} />
         </div>
         <div>
-        <ProjectLink url={project.url} />
+          {project.urls.map((url, index) =>
+            <ProjectLink key={index} url={url} />
+          )}
+        
         </div>
       </div>
-
-
   </div>
   )
 }

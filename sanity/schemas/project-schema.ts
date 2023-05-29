@@ -3,8 +3,19 @@ const project = {
   title: "Projects",
   type: "document",
   fields: [
-    { name: "name", title: "Name", type: "string" },
-    { name: "slug", title: "Slug", type: "slug", options: { source: "name" } },
+    {
+      name: "name",
+      title: "Name",
+      type: "string",
+      validation: (Rule: { required: () => any }) => Rule.required(),
+    },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: { source: "name" },
+      validation: (Rule: { required: () => any }) => Rule.required(),
+    },
     {
       name: "tags",
       type: "array",
@@ -35,7 +46,30 @@ const project = {
       options: { hotspot: true },
       fields: [{ name: "alt", title: "Alt", type: "string" }],
     },
-    { name: "url", title: "URL", type: "url" },
+    {
+      title: "URLs",
+      name: "urls",
+      type: "array",
+      of: [
+        {
+          type: "url",
+          fields: [
+            {
+              title: "URL",
+              name: "url",
+              type: "url",
+              validation: (Rule: {
+                required: () => {
+                  (): any;
+                  new (): any;
+                  uri: { (arg0: { scheme: string[] }): any; new (): any };
+                };
+              }) => Rule.required().uri({ scheme: ["http", "https"] }),
+            },
+          ],
+        },
+      ],
+    },
     {
       name: "content",
       title: "Content",

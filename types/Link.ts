@@ -6,4 +6,5 @@ export type LinkType = {
   image?: string;
   url: string;
   date?: Date;
+  accesscount: number;
 };

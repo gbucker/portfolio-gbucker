@@ -7,7 +7,7 @@ export type Project = {
   slug: string;
   tags: Array<string>;
   image: string;
-  url: string;
+  urls: Array<string>;
   content: PortableTextBlock[];
   date: Date;
 };

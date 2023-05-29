@@ -4,7 +4,7 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
 import imageUrlBuilder from "@sanity/image-url";
 import { Post } from "@/types/Post";
-import { Link } from "@/types/Link";
+import { LinkType } from "@/types/Link";
 
 export async function getProjects(): Promise<Project[]> {
   const projects = await createClient(clientConfig).fetch(
@@ -15,7 +15,7 @@ export async function getProjects(): Promise<Project[]> {
       "slug": slug.current,
       tags,
       "image": image.asset->url,
-      url,
+      urls,
       content,
       date
     }`
@@ -37,7 +37,7 @@ export async function getProject(slug: string): Promise<Project> {
       "slug": slug.current,
       tags,
       image,
-      url,
+      urls,
       content,
       date
     }`,
@@ -102,7 +102,7 @@ export async function getPost(slug: string): Promise<Post> {
   );
 }
 
-export async function getLinks(): Promise<Link[]> {
+export async function getLinks(): Promise<LinkType[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "linktree"]{
       _id,
@@ -111,12 +111,13 @@ export async function getLinks(): Promise<Link[]> {
       "slug": slug.current,
       image,
       url,
-      date
+      date,
+      accesscount
     }`
   );
 }
 
-export async function getLink(slug: string): Promise<Link> {
+export async function getLink(slug: string): Promise<LinkType> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "linktree" && slug.current == $slug][0]{
       _id,
@@ -125,7 +126,8 @@ export async function getLink(slug: string): Promise<Link> {
       "slug": slug.current,
       image,
       url,
-      date
+      date,
+      accesscount
     }`,
     { slug }
   );
