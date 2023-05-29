@@ -30,13 +30,15 @@ export default async function Project({params}: Props) {
         <div className="mb-10">
         <PortableText value={project.content} />
         </div>
-        <div>
-          {project.urls.map((url, index) =>
-            <ProjectLink key={index} url={url} />
+        <div className="grid grid-cols-1 justify-center gap-10">
+          {project.urls.map((urlObject, index) =>
+            <div key={index}>
+              <ProjectLink url={urlObject.url} />
+            </div>
           )}
-        
         </div>
       </div>
   </div>
   )
 }
+

@@ -7,7 +7,11 @@ export type Project = {
   slug: string;
   tags: Array<string>;
   image: string;
-  urls: Array<string>;
+  urls: UrlObject[];
   content: PortableTextBlock[];
   date: Date;
+};
+
+export type UrlObject = {
+  url: string;
 };

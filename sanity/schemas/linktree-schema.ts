@@ -1,17 +1,30 @@
+const slugSource = (doc: { name: string; date: string }) => {
+  if (doc.date !== undefined) {
+    return doc.name + "-" + doc.date;
+  } else {
+    return doc.name;
+  }
+};
+
 const linktree = {
   name: "linktree",
   title: "Link Tree",
   type: "document",
   fields: [
-    { name: "name", title: "Name", type: "string" },
+    {
+      name: "name",
+      title: "Name",
+      type: "string",
+      validation: (Rule: { required: () => any }) => Rule.required(),
+    },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
       options: {
-        source: (doc: { name: string; date: string }) =>
-          doc.name + "-" + doc.date,
+        source: slugSource,
       },
+      validation: (Rule: { required: () => any }) => Rule.required(),
     },
     {
       name: "image",
@@ -19,7 +32,18 @@ const linktree = {
       type: "image",
       fields: [{ name: "alt", title: "Alt", type: "string" }],
     },
-    { name: "url", title: "URL", type: "url" },
+    {
+      name: "url",
+      title: "URL",
+      type: "url",
+      validation: (Rule: {
+        required: () => {
+          (): any;
+          new (): any;
+          uri: { (arg0: { scheme: string[] }): any; new (): any };
+        };
+      }) => Rule.required().uri({ scheme: ["http", "https"] }),
+    },
     {
       name: "date",
       title: "Date",
@@ -31,6 +55,13 @@ const linktree = {
       title: "Access Count",
       type: "number",
       readonly: true,
+    },
+  ],
+  orderings: [
+    {
+      title: "Date",
+      name: "sortbydate",
+      by: [{ field: "date", direction: "desc" }],
     },
   ],
 };

@@ -4,13 +4,20 @@ import YoutubeComponent from './YoutubeComponent';
 import SpotifyComponent from './SpotifyComponent';
 
 const ProjectLink = ({ url }: {url: string}) => {
-  if (url.includes('youtube.com') || url.includes('youtu.be')) {
-
+  if (url === undefined) {
+    return <></>
+  } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
     return <YoutubeComponent url={url}/>;
   } else if (url.includes('spotify.com')) {
     return <SpotifyComponent url={url}/>;
   } else if (url.includes('drive.google.com/file')) {
-    return <PdfComponent url={url}/>;
+    return (
+    <>
+    <PdfComponent url={url}/>
+    <div className="grid md:hidden justify-center m-auto">
+      <OtherComponent url={url}/>
+    </div>
+    </>);
   } else {
     return <OtherComponent url={url}/>;
   }
@@ -18,7 +25,8 @@ const ProjectLink = ({ url }: {url: string}) => {
 
 const PdfComponent = ({url}: {url: string}) => {
   return (
-    <iframe src={url} width="640" height="480" allow="autoplay"></iframe>
+      <iframe src={url.replace('view', 'preview')} className="w-full md:h-[36rem] xl:h-[72rem] hidden md:grid" allow="autoplay"></iframe>
+      
   );
 };
 

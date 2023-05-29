@@ -19,7 +19,7 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-br">
-      <body className="max-w-5xl mx-auto p-10 overflow-y-scroll">
+      <body className="max-w-5xl mx-auto p-10 xl:px-0 overflow-y-scroll">
         <main className=""><Header pages={pages} showNameHeader={true}/>
         {children}</main>
         <Analytics />

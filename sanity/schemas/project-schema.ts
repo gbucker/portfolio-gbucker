@@ -52,6 +52,7 @@ const project = {
       type: "array",
       of: [
         {
+          name: "singleurl",
           type: "object",
           fields: [
             {
@@ -81,6 +82,13 @@ const project = {
       title: "Date",
       type: "date",
       options: { dateFormat: "yyyy-MM" },
+    },
+  ],
+  orderings: [
+    {
+      title: "Date",
+      name: "sortbydate",
+      by: [{ field: "date", direction: "desc" }],
     },
   ],
 };

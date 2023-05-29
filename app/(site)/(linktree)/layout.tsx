@@ -1,11 +1,10 @@
 import "@/app/globals.css";
-import { getPages } from "@/sanity/sanity-utils";
 import React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {
-  title: "Gustavo Bucker",
-  description: "Portfólio de Gustavo Bucker",
+  title: "Gustavo Bucker - Links",
+  description: "Gustavo Bucker - acesse meus links",
 };
 
 export default async function RootLayout({
@@ -13,8 +12,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
-  const pages = await getPages();
 
   return (
     <html lang="pt-br">
