@@ -25,7 +25,7 @@ const ProjectLink = ({ url }: {url: string}) => {
 
 const PdfComponent = ({url}: {url: string}) => {
   return (
-      <iframe src={url.replace('view', 'preview')} className="w-full md:h-[36rem] xl:h-[72rem] hidden md:grid" allow="autoplay"></iframe>
+      <iframe src={url.replace('view', 'preview').split("?")[0]} className="w-full md:h-[36rem] xl:h-[72rem] hidden md:grid" allow="autoplay"></iframe>
       
   );
 };
