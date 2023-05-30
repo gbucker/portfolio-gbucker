@@ -45,7 +45,7 @@ function LinkList({links}: {links: LinkType[]}): JSX.Element[] {
       <div className={`bg-white items-center flex gap-2 md:gap-10 border-2 border-gray-500 rounded-full p-1 h-[87px] hover:scale-105 hover:border-purple-500 transition`}>
         {link.image && (
           <Image
-          src={urlFor(link.image).width(100).height(100).url()}
+          src={urlFor(link.image).width(100).height(100).auto('format').crop('focalpoint').url()}
           alt={link.name}
           width={75}
           height={75}

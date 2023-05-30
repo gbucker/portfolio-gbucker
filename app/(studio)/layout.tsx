@@ -1,8 +1,8 @@
 import "../globals.css";
 
 export const metadata = {
-  title: "Gustavo Bucker",
-  description: "Portfólio de Gustavo Bucker",
+  title: "Sanity Studio - Gustavo Bucker",
+  description: "Sanity Studio - Portfólio de Gustavo Bucker",
 };
 
 export default function RootLayout({

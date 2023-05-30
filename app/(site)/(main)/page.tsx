@@ -6,7 +6,7 @@ async function Home() {
   const projects = await getProjects();
 
   return (
-    <div className="mt-10">
+    <div className="">
     <ProjectsList projects={projects}/>
     </div>
   )

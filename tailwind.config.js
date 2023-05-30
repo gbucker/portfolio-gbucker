@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// prettier-ignore
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
