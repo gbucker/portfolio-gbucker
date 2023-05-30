@@ -12,7 +12,7 @@ export default async function Page({params}: PageProps) {
   
   return (
     <div className="max-w-5xl mx-auto">
-      <h3 className="text-3xl md:text-4xl text-gray-800 mb-10">{page.title}</h3>
+      <h3 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-10">{page.title}</h3>
       <div className="bg-gray-100 rounded-xl p-5">
         <PortableText value={page.content} components={components}/>
       </div>
