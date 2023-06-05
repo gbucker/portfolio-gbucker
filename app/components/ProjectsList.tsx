@@ -4,14 +4,15 @@ import { Project } from '@/types/Project';
 import Link from 'next/link';
 import Image from "next/image";
 import React, { useState } from 'react';
-import GradientText from './GradientText';
 
 function filterProjects(projects: Project[], selectedOption: string): Project[] {
+  const newProjects = projects.sort((a: Project, b: Project) => new Date(b.date).getTime() - new Date(a.date).getTime())
+
   if (selectedOption === 'todos') {
-    return projects;
+    return newProjects;
   }
 
-  return projects.filter(project => project.tags.includes(selectedOption.toLowerCase()));
+  return newProjects.filter(project => project.tags.includes(selectedOption.toLowerCase()));
 }
 
 function ProjectsList({projects}: {projects: Project[]}) {
@@ -35,13 +36,13 @@ function ProjectsList({projects}: {projects: Project[]}) {
   return (
     <>
       <h3 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-10">Projetos</h3>
-      <div className="grid justify-items-center md:justify-items-start">
-        <ul className="max-w-min grid grid-rows-2 sm:grid-rows-1 grid-flow-col row-auto sm:justify-between  mb-10 py-5 px-5 md:px-10 gap-2 md:gap-5 bg-gray-100 border-2 border-gray-400 rounded-lg text-lg md:text-xl text-gray-700">
+      <div className="grid justify-items-center md:justify-items-start text-gray-700">
+        <ul className="max-w-min grid grid-rows-2 sm:grid-rows-1 grid-flow-col row-auto sm:justify-between gap-2 md:gap-5 mb-10 text-xl ">
           {categories.map((category, index) => (
             <li key={index} className="grid list-none whitespace-nowrap">
               <a
-                className={`hover:cursor-pointer ${
-                  selectedOption === category.tag ? 'font-bold' : ''
+                className={` hover:text-gray-800 hover:cursor-pointer ${
+                  selectedOption === category.tag ? 'text-gray-800 font-bold' : ''
                 }`}
                 onClick={() => handleLinkClick(category.tag)}
               >
@@ -52,18 +53,18 @@ function ProjectsList({projects}: {projects: Project[]}) {
         </ul>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center justify-self-center">
         {filteredProjects.map((project) => (
-          <Link key={project._id} className="grid w-auto bg-gray-100 border-2 border-gray-400 rounded-lg p-1 hover:scale-105 hover:border-indigo-400 transition" href={`/projetos/${project.slug}`}>
+          <Link key={project._id} className="grid w-auto bg-white border border-gray-700 hover:border-indigo-500 hover:border-2  hover:scale-105 hover:text-indigo-500 transition" href={`/projetos/${project.slug}`}>
             {project.image && (
               <Image
               src={urlFor(project.image).width(400).height(400).crop('focalpoint').fit('crop').url()}
               alt={project.name}
               width={400}
               height={400}
-              className="object-cover rounded-lg border border-gray-400"
+              className="object-cover"
               priority={true}
               />
             )}
-            <div className="mt-2 ml-1 mb-2 text-center"><GradientText className="text-md font-extrabold">{project.name}</GradientText></div>
+            <div className="mt-2 mb-2 text-center text-lg font-bold">{project.name}</div>
           </Link>
         ))}
         </div>

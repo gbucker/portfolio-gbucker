@@ -20,7 +20,7 @@ export default async function RootLayout({
 
   return (
     <html lang="pt-br">
-      <body className="max-w-5xl mx-auto xl:py-10 p-10 xl:p-0 overflow-y-scroll overflow-x-auto">
+      <body className="bg-gray-100 max-w-5xl mx-auto xl:py-10 p-10 xl:p-0 overflow-y-scroll overflow-x-auto">
         <Header pages={pages} showNameHeader={false}/>
         <NameHeader />
         <main className="">{children}</main>

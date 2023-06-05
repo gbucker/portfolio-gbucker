@@ -29,7 +29,7 @@ function PagesList({ pages, pathname }: { pages: Page[], pathname: string}) {
       _createdAt: undefined,
       title: 'Portfólio',
       slug: '',
-      content: pages[0].content,
+      content: newPages[0].content,
     }
 
     newPages.unshift(projetos);

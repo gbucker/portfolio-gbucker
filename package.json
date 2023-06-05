@@ -12,6 +12,7 @@
     "@portabletext/react": "^3.0.0",
     "@portabletext/types": "^2.0.2",
     "@sanity/client": "^6.1.2",
+    "@sanity/eventsource": "^5.0.0",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.11.3",
     "@types/node": "20.2.3",

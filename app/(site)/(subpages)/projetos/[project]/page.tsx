@@ -16,21 +16,19 @@ export default async function Project({params}: ProjectProps) {
   const project = await getProject(slug);
 
   return (
-  <div className="bg-gray-100 border-2 border-indigo-300 rounded-xl p-5">
+  <div className="">
     <div className="flex items-bottom justify-left gap-10">
     <Image
-          src={urlFor(project.image).width(50).height(50).auto('format').crop('focalpoint').fit('crop').url()}
+          src={urlFor(project.image).width(48).height(48).crop('focalpoint').fit('crop').url()}
           alt={project.name}
-          width={50}
-          height={50}
-          className="hidden md:flex object-cover rounded-md border border-gray-700 w-50"
+          width={48}
+          height={48}
+          className="hidden md:flex object-cover border border-gray-700 w-50"
           />
-      <div className=""><GradientText className="text-4xl font-extrabold text-gray-700">{project.name}</GradientText></div>
+      <div className="text-4xl font-extrabold text-gray-700">{project.name}</div>
     </div>
-      <div className="text-lg text-gray-700 mt-5">
-        <div className="mb-10">
-        <PortableText value={project.content} components={components}/>
-        </div>
+      <div className="text-lg text-gray-700 mt-5 bg-white border border-gray-700 p-5">
+        {project.content && <div className="mb-10"><PortableText value={project.content} components={components}/></div>}
         <div className="grid grid-cols-1 justify-center gap-10">
           {project.urls.map((urlObject, index) =>
             <div key={index}>
