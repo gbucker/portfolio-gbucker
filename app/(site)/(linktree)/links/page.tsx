@@ -29,7 +29,9 @@ function LinkList({links}: {links: LinkType[]}): JSX.Element[] {
   const isDateFuture = (link: any) => {
     if (link.date !== null) {
       let date1 = new Date(link.date).getTime();
-      let date2 = new Date().getTime();
+      let tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      let date2 = tomorrow.getTime();
     
       return date1 >= date2;
     } else {
