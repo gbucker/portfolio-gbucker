@@ -26,7 +26,7 @@ export const components: PortableTextComponents = {
   marks: {
     // @ts-expect-error
     link: ({value, children}: {children: ReactNode }) => {
-      const target = (value?.href || '').startsWith('http') ? '_blank' : ''
+      const target = (value.href)
       return(<Link href={target} className={`font-bold text-green-600 hover:text-gray-700 transition`}>{children}</Link>)},
     strong: ({children}: {children: ReactNode }) => <strong className="font-extrabold text-gray-700">{children}</strong>,
   },
