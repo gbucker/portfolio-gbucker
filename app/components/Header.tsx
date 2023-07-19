@@ -9,33 +9,79 @@ import NameHeaderSmall from './NameHeaderSmall';
 
 import '@/app/components/Header.css'
 
-function Header({ pages, showNameHeader }: { pages: Page[], showNameHeader: boolean}) {
+type PageItem = {
+  title: string;
+  slug: string;
+}
+
+export default function Header({ pages, showNameHeader }: { pages: Page[], showNameHeader: boolean}) {
 
   const pathname = usePathname();
 
+  const pageitems: PageItem[] = pages.map(({ title, slug }) => ({ title, slug }));
+
+  const projetos: PageItem = {
+    title: 'Portfólio',
+    slug: '',
+  }
+  pageitems.unshift(projetos);
+
+  const blog: PageItem = {
+    title: 'Blog',
+    slug: 'blog',
+  }
+  pageitems.push(blog);
+
   return (
     <header className={`flex items-bottom pb-10 ${showNameHeader ? 'justify-between': 'justify-end'}`}>
-      {showNameHeader && <><NameHeaderSmall /><PagesList pages={pages} pathname={pathname}/></>}
-      {!showNameHeader && <><PagesList pages={pages} pathname={pathname}/></>}
+      {showNameHeader && <><NameHeaderSmall /><PagesList pages={pageitems} pathname={pathname}/></>}
+      {!showNameHeader && <><PagesList pages={pageitems} pathname={pathname}/></>}
     </header>
   );
 }
 
-function PagesList({ pages, pathname }: { pages: Page[], pathname: string}) {
-    const newPages = [...pages];
-    // gambiarra pra colocar projetos na barra
-    const projetos: Page = {
-      _id: '1',
-      _createdAt: undefined,
-      title: 'Portfólio',
-      slug: '',
-      content: newPages[0].content,
+function PagesList({ pages, pathname }: { pages: PageItem[], pathname: string }) {
+
+  const formatPageItem = (page: PageItem, index: number) => {
+    if (page.slug === '') {
+      // Special case for main 'projetos' page
+      const isActive = pathname.includes('projetos') || pathname === '/';
+
+      return (
+        <li key={index}>
+          {isActive ? (
+            <GradientText className="font-bold list-none block">
+              {page.title}
+            </GradientText>
+          ) : (
+              <GradientLink className="font-bold list-none block" href={`/${page.slug}`}>
+                {page.title}
+              </GradientLink>
+          )}
+        </li>
+      );
+    } else {
+      const isActive = pathname.startsWith(`/${page.slug}`);
+
+      return (
+        <li key={index}>
+          {isActive ? (
+            <Link href={`/${page.slug}`}>
+              <GradientText className="font-bold list-none block">
+                {page.title}
+              </GradientText>
+            </Link>
+          ) : (
+              <GradientLink className="font-bold list-none block"  href={`/${page.slug}`}>
+                {page.title}
+              </GradientLink>
+          )}
+        </li>
+      );
     }
+  };
 
-    newPages.unshift(projetos);
-
-    const children = newPages.map((page, index) => ((pathname == "/"+page.slug  || (index === 0 && pathname.includes('projetos'))?
-    <li key={page._id}><Link href={`/${page.slug}`}><GradientText className="font-bold list-none block">{page.title}</GradientText></Link></li> : <li key={page._id}><GradientLink href={`/${page.slug}`} className="font-bold list-none block">{page.title}</GradientLink></li>)))
+  const children = pages.map((page, index) => formatPageItem(page, index));
 
   return (
     <>
@@ -75,8 +121,3 @@ function PagesListMobile({ children, className }: { children: ReactNode, classNa
     </div>
   );
 }
-
-
-
-
-export default Header;

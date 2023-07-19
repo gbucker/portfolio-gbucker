@@ -1,3 +1,11 @@
+const slugSource = (doc: { title: string; publishedAt: string }) => {
+  if (doc.publishedAt !== undefined) {
+    return doc.title + "-" + doc.publishedAt.substring(0, 10);
+  } else {
+    return doc.title;
+  }
+};
+
 const post = {
   title: "Post",
   name: "post",
@@ -7,12 +15,16 @@ const post = {
       name: "title",
       title: "Title",
       type: "string",
+      validation: (Rule: { required: () => any }) => Rule.required(),
     },
     {
       name: "slug",
       title: "Slug",
       type: "slug",
-      options: { source: "name" },
+      options: {
+        source: slugSource,
+      },
+      validation: (Rule: { required: () => any }) => Rule.required(),
     },
     {
       name: "publishedAt",
@@ -23,7 +35,14 @@ const post = {
       name: "content",
       title: "Content",
       type: "array",
-      of: [{ type: "block" }],
+      of: [
+        { type: "block" },
+        {
+          type: "image",
+          options: { hotspot: true },
+          fields: [{ name: "alt", title: "Alt", type: "string" }],
+        },
+      ],
     },
   ],
   preview: {

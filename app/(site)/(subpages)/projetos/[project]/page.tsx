@@ -5,7 +5,6 @@ import { PortableText } from "@portabletext/react";
 import ProjectLink from "@/app/components/ProjectLink";
 import { Metadata } from "next";
 import { components } from '@/app/components/PTComponents';
-import GradientText from "@/app/components/GradientText";
 
 type ProjectProps = {
   params: {project: string}

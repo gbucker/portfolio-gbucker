@@ -6,6 +6,7 @@ import { createClient } from "next-sanity";
 import clientConfig from "./config/client-config";
 import imageUrlBuilder from "@sanity/image-url";
 import { groq } from "next-sanity";
+import { Post } from "@/types/Post";
 
 export async function getProjects(): Promise<Project[]> {
   const projects = await createClient(clientConfig).fetch(groq`
@@ -98,6 +99,33 @@ export async function getLink(slug: string): Promise<LinkType> {
     date,
     accesscount
   }`,
+    { slug }
+  );
+}
+
+export async function getPosts(): Promise<Post[]> {
+  return createClient(clientConfig).fetch(groq`
+  *[_type == "post"]{
+    _id,
+    _createdAt,
+    title,
+    "slug": slug.current,
+    publishedAt,
+    content
+  }`);
+}
+
+export async function getPost(slug: string): Promise<Post> {
+  return createClient(clientConfig).fetch(
+    groq`
+    *[_type == "post"  && slug.current == $slug][0]{
+      _id,
+      _createdAt,
+      title,
+      "slug": slug.current,
+      publishedAt,
+      content
+    }`,
     { slug }
   );
 }
