@@ -26,11 +26,11 @@ export default function Header({ pages, showNameHeader }: { pages: Page[], showN
   }
   pageitems.unshift(projetos);
 
-  const blog: PageItem = {
-    title: 'Blog',
-    slug: 'blog',
-  }
-  pageitems.push(blog);
+  // const blog: PageItem = {
+  //   title: 'Blog',
+  //   slug: 'blog',
+  // }
+  // pageitems.push(blog);
 
   return (
     <header className={`flex items-bottom pb-10 ${showNameHeader ? 'justify-between': 'justify-end'}`}>
