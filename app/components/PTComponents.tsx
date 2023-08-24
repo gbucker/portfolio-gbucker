@@ -37,6 +37,7 @@ export const components: PortableTextComponents = {
     image: ({value}) =><div className="flex items-center justify-left my-10"><Image
       src={urlFor(value).width(400).height(400).crop('focalpoint').quality(100).fit('max').url()}
       alt={value.alt}
+      title={value.alt}
       width={400}
       height={400}
       className="object-cover rounded-lg"
