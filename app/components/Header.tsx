@@ -24,16 +24,17 @@ export default function Header({ pages, showNameHeader }: { pages: Page[], showN
     title: 'Portfólio',
     slug: '',
   }
-  pageitems.unshift(projetos);
 
-  // const blog: PageItem = {
-  //   title: 'Blog',
-  //   slug: 'blog',
-  // }
-  // pageitems.push(blog);
+  const lab: PageItem = {
+    title: 'Laboratório Perigoso de Comédia',
+    slug: 'lab',
+  }
+
+  pageitems.unshift(projetos);
+  pageitems.push(lab);
 
   return (
-    <header className={`flex items-bottom pb-10 ${showNameHeader ? 'justify-between': 'justify-end'}`}>
+    <header className={`flex items-bottom md:pb-10 ${showNameHeader ? 'justify-between': 'justify-end'}`}>
       {showNameHeader && <><NameHeaderSmall /><PagesList pages={pageitems} pathname={pathname}/></>}
       {!showNameHeader && <><PagesList pages={pageitems} pathname={pathname}/></>}
     </header>
@@ -60,6 +61,23 @@ function PagesList({ pages, pathname }: { pages: PageItem[], pathname: string })
           )}
         </li>
       );
+    } else if (page.slug === 'lab') {
+      // Special case for 'lab' page
+      const isActive = pathname === '/lab';
+
+      return (
+        <li key={index}>
+          {isActive ? (
+            <GradientText className="font-bold list-none block">
+              {page.title}
+            </GradientText>
+          ) : (
+              <GradientLink className="font-bold list-none block" href={`/${page.slug}`}>
+                {page.title}
+              </GradientLink>
+          )}
+        </li>
+      );
     } else {
       const isActive = pathname.startsWith(`/${page.slug}`);
 
@@ -72,7 +90,7 @@ function PagesList({ pages, pathname }: { pages: PageItem[], pathname: string })
               </GradientText>
             </Link>
           ) : (
-              <GradientLink className="font-bold list-none block"  href={`/${page.slug}`}>
+              <GradientLink className="font-bold list-none block" href={`/${page.slug}`}>
                 {page.title}
               </GradientLink>
           )}
