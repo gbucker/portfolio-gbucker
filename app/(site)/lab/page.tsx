@@ -15,7 +15,7 @@ function HotSite() {
         </div>
 
         {/* Face Image Section */}
-        <div className="fixed top-[60%] transform -translate-y-[70%] z-10 right-2 md:right-[calc((120%-theme(maxWidth.5xl))/2)] lg:right-[calc((100%-theme(maxWidth.5xl))/2)]">
+        <div className="fixed top-[60%] transform -translate-y-[70%] z-10 right-2 md:right-[calc((100%-theme(maxWidth.5xl))/2)]">
           <Image
             src="https://cdn.sanity.io/images/p06bvv6p/production/c3b87a1136e0bf40a09710cc20042d9fca2a9d4a-2896x3010.png"
             alt="Gustavo Bucker"
@@ -31,7 +31,7 @@ function HotSite() {
       {/* Main Section */}
       <main className="relative z-10">
         {/* Content Section */}
-        <div className="bg-[#141d45] w-screen flex-grow text-gray-100 p-5 md:p-10 text-left relative mt-10">
+        <div className="bg-[#141d45] w-full flex-grow text-gray-100 p-5 md:p-10 text-left relative mt-10">
           <div className="max-w-5xl mx-auto">
             <p className="text-lg">
             Bem-vindes ao Laboratório Perigoso de Comédia, um experimento para (re)descobrir o que há de mais genuíno e engraçado em você no palco. Projetado para comediantes e estudantes de comédia, este curso é um desafio de auto-observação e um convite ao risco.
@@ -51,10 +51,10 @@ function HotSite() {
           </div>
         </div>
         {/* Google Forms Section */}
-        <div className="max-w-5xl mx-auto bg-gray-100">
+        <div id="google-form" className="max-w-5xl mx-auto bg-gray-100">
           <iframe 
             src="https://docs.google.com/forms/d/e/1FAIpQLSdF7VOfAGFUatD_h38uS8u-yxXc74v-aJV-bawtFGfvVGZeCQ/viewform?embedded=true" 
-            className="pt-10 w-full overflow-hidden" 
+            className="pt-10 w-full overflow-x-hidden" 
             height="2000" 
           >Carregando…</iframe>
         </div>
