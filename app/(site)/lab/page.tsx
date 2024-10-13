@@ -66,8 +66,7 @@ function HotSite() {
             <div className="w-full md:w-1/2 mt-5 bg-gray-200">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.285083072992!2d-46.64519102385397!3d-23.558202561477785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce595966c17491%3A0x82a68c36ac8e8f8d!2sQ.G.%20791!5e0!3m2!1spt-BR!2sbr!4v1728768675559!5m2!1spt-BR!2sbr"
               className="border-0 w-full max-w-5xl h-[300px]" 
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+              referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
