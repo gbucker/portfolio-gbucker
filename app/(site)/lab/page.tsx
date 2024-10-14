@@ -59,6 +59,10 @@ function HotSite() {
               Se você está disponível para se abrir ao desconhecido e explorar a comédia, venha fazer parte desta experiência. O risco é alto, mas as recompensas são ainda maiores — o riso pode estar ao seu alcance.
             </p>
 
+            <p className="text-lg font-bold pt-10">
+              Valor: R$ 250
+            </p>
+
             {/* Google Maps */}
             <p className="text-lg font-bold pt-10">
               Local: Q.G 791
