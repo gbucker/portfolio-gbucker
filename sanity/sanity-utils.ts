@@ -1,5 +1,6 @@
 import { Project } from "@/types/Project";
 import { Page } from "@/types/Page";
+import { Design } from "@/types/Design";
 import { LinkType } from "@/types/Link";
 
 import { createClient } from "next-sanity";
@@ -133,4 +134,43 @@ export async function getPost(slug: string): Promise<Post> {
 export function urlFor(source: string) {
   const builder = imageUrlBuilder(createClient(clientConfig));
   return builder.image(source);
+}
+
+export async function getDesigns(): Promise<Design[]> {
+  const designs = await createClient(clientConfig).fetch(groq`
+  *[_type == "project"] {
+    _id,
+    _createdAt,
+    name,
+    "slug": slug.current,
+    tags,
+    "image": image.asset->url,
+    urls,
+    content,
+    date
+  }`);
+
+  designs.sort(
+    (a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  return designs;
+}
+
+export async function getDesign(slug: string): Promise<Design> {
+  return createClient(clientConfig).fetch(
+    groq`
+  *[_type == "project" && slug.current == $slug][0] {
+    _id,
+    _createdAt,
+    name,
+    "slug": slug.current,
+    tags,
+    "image": image.asset->url,
+    urls,
+    content,
+    date
+  }`,
+    { slug }
+  );
 }
