@@ -2,7 +2,6 @@ import "@/app/globals.css";
 import React from 'react';
 import { getPages } from "@/sanity/sanity-utils";
 import Header from "@/app/components/Header";
-import NameHeader from "@/app/components/NameHeader";
 import { Analytics } from '@vercel/analytics/react';
 
 export const metadata = {

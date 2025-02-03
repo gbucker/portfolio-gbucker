@@ -17,7 +17,7 @@ function HotSite() {
         {/* Face Image Section */}
         <div className="fixed z-10 top-[60%] md:top-[558px] transform -translate-y-[70%] right-2 lg:right-[calc((100%-theme(maxWidth.5xl))/2)]">
           <Image
-            src="https://cdn.sanity.io/images/p06bvv6p/production/c3b87a1136e0bf40a09710cc20042d9fca2a9d4a-2896x3010.png"
+            src="https://cdn.sanity.io/images/p06bvv6p/production/58b368ed2eb5e0ee5ea9d7eac543c793278b0ae0-2896x3010.png"
             alt="Gustavo Bucker"
             width={400}
             height={500}
@@ -26,10 +26,10 @@ function HotSite() {
         </div>
 
         {/* Date and CTA Section */}
-        <div className="relative z-20 md:z-0 bg-[#141d45] md:bg-transparent w-full flex-grow text-gray-100 md:text-[#141d45] text-left px-10 pt-10 md:p-0 md:pt-0 md:pb-10">
-          <p className="text-xl font-bold">
-            04, 11, 25 de novembro e 02 de dezembro de 2024<br/>19 às 22 horas
-          </p>
+        <div className="relative z-20 md:z-0 bg-[#141d45] md:bg-transparent w-full flex-grow text-gray-100 md:text-[#141d45] text-left pt-10 pt-10 md:p-0 md:pt-0 md:pb-10">
+
+          <p className="pt-5 text-xl font-bold">Sábados de março (8, 15, 22,29) e abril (5, 12, 19, 26) de 2025
+          <br/> das 10 às 13 horas</p>
 
           <div className="text-left mt-5">
             <a href="#google-form" className="bg-gray-100 text-[#141d45] md:bg-[#141d45] md:text-gray-100 object-center md:boject-left py-3 px-6 rounded-md inline-block font-bold scroll-smooth">
@@ -59,19 +59,15 @@ function HotSite() {
               Se você está disponível para se abrir ao desconhecido e explorar a comédia, venha fazer parte desta experiência. O risco é alto, mas as recompensas são ainda maiores — o riso pode estar ao seu alcance.
             </p>
 
-            <p className="text-lg font-bold pt-10">
-              Valor: R$ 250
-            </p>
-
             {/* Google Maps */}
-            <p className="text-lg font-bold pt-10">
-              Local: Q.G 791
+            {/* <p className="text-lg font-bold pt-10">
+              Local:
             </p>
             <div className="w-full md:w-1/2 mt-5 bg-gray-200">
               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.285083072992!2d-46.64519102385397!3d-23.558202561477785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce595966c17491%3A0x82a68c36ac8e8f8d!2sQ.G.%20791!5e0!3m2!1spt-BR!2sbr!4v1728768675559!5m2!1spt-BR!2sbr"
               className="border-0 w-full max-w-5xl h-[300px]" 
               referrerPolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -79,7 +75,7 @@ function HotSite() {
         {/* Google Forms Section */}
         <div id="google-form" className="max-w-5xl mx-auto bg-gray-100">
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdF7VOfAGFUatD_h38uS8u-yxXc74v-aJV-bawtFGfvVGZeCQ/viewform?embedded=true"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSf0_V5EO67z12kVOpO2FaFFOXyb8otULdTa7qcda7N-jl9pmA/viewform?embedded=true"
             className="pt-10 w-full overflow-x-hidden"
             height="2000"
           >Carregando…</iframe>
