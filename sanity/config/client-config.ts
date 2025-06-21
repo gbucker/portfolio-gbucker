@@ -1,6 +1,6 @@
 const clientConfig = {
-  projectId: "p06bvv6p",
-  dataset: "production",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
   apiVersion: "2023-05-24",
   useCdn: false,
 };

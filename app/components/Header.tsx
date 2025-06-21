@@ -25,13 +25,7 @@ export default function Header({ pages, showNameHeader }: { pages: Page[], showN
     slug: '',
   }
 
-  const lab: PageItem = {
-    title: 'Laboratório Perigoso de Comédia',
-    slug: 'lab',
-  }
-
   pageitems.unshift(projetos);
-  pageitems.push(lab);
 
   return (
     <header className={`flex items-bottom md:pb-10 ${showNameHeader ? 'justify-between': 'justify-end'}`}>
@@ -47,23 +41,6 @@ function PagesList({ pages, pathname }: { pages: PageItem[], pathname: string })
     if (page.slug === '') {
       // Special case for main 'projetos' page
       const isActive = pathname.includes('projetos') || pathname === '/';
-
-      return (
-        <li key={index}>
-          {isActive ? (
-            <GradientText className="font-bold list-none block">
-              {page.title}
-            </GradientText>
-          ) : (
-              <GradientLink className="font-bold list-none block" href={`/${page.slug}`}>
-                {page.title}
-              </GradientLink>
-          )}
-        </li>
-      );
-    } else if (page.slug === 'lab') {
-      // Special case for 'lab' page
-      const isActive = pathname === '/lab';
 
       return (
         <li key={index}>

@@ -1,6 +1,12 @@
 import Image from 'next/image';
 
 function HotSite() {
+  const sanityProjectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const sanityDataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+  
+  const backgroundImageUrl = `https://cdn.sanity.io/images/${sanityProjectId}/${sanityDataset}/1f79ee1f53f77d206603a59a8076e7fee48568fe-1280x800.png`;
+  const faceImageUrl = `https://cdn.sanity.io/images/${sanityProjectId}/${sanityDataset}/58b368ed2eb5e0ee5ea9d7eac543c793278b0ae0-2896x3010.png`;
+
   return (
     <div className="relative items-left">
       {/* Header Section */}
@@ -8,7 +14,7 @@ function HotSite() {
         <div
           className="flex pb-8 justify-start bg-no-repeat bg-left-top h-64 md:h-96 mb-36 md:m-0 ml-5"
           style={{
-            backgroundImage: "url('https://cdn.sanity.io/images/p06bvv6p/production/1f79ee1f53f77d206603a59a8076e7fee48568fe-1280x800.png')",
+            backgroundImage: `url('${backgroundImageUrl}')`,
             backgroundSize: 'contain',
           }}
         >
@@ -17,7 +23,7 @@ function HotSite() {
         {/* Face Image Section */}
         <div className="fixed z-10 top-[60%] md:top-[558px] transform -translate-y-[70%] right-2 lg:right-[calc((100%-theme(maxWidth.5xl))/2)]">
           <Image
-            src="https://cdn.sanity.io/images/p06bvv6p/production/58b368ed2eb5e0ee5ea9d7eac543c793278b0ae0-2896x3010.png"
+            src={faceImageUrl}
             alt="Gustavo Bucker"
             width={400}
             height={500}
@@ -26,7 +32,7 @@ function HotSite() {
         </div>
 
         {/* Date and CTA Section */}
-        <div className="relative z-20 md:z-0 bg-[#141d45] md:bg-transparent w-full flex-grow text-gray-100 md:text-[#141d45] text-left pt-10 pt-10 md:p-0 md:pt-0 md:pb-10">
+        <div className="relative z-20 md:z-0 bg-[#141d45] md:bg-transparent w-full flex-grow text-gray-100 md:text-[#141d45] text-left pt-10 md:p-0 md:pt-0 md:pb-10">
 
           <p className="pt-5 text-xl font-bold">Sábados de março (8, 15, 22,29) e abril (5, 12, 19, 26) de 2025
           <br/> das 10 às 13 horas</p>
